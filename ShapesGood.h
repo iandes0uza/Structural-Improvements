@@ -2,84 +2,100 @@
 #include <string>
 using namespace std;
 
-class Shape{
+//Shape Structure
+struct Shape{
     public:
-        void draw();
+        ~Shape();
+        Shape();
         Shape(int l, int w);
         int getLength();
         int getWidth();
+        virtual void draw();
 
-    private:
-        const int l;
-        const int w;
+    protected:
+        const int length;
+        const int width;
 };
 
 //Fillable objects must be shapes
-class Fillable: public Shape{
+struct Fillable{
     public:
+        ~Fillable();
         Fillable(string f);
         string getFill();
 
-    private:
+    protected:
         const string fill;
 };
 
 //Objects that have Text must be filled
-class Text: public Shape{
+struct Text{
     public:
+        ~Text();
         Text(string t);
         string getText();
 
-    private:
+    protected:
         const string text;
 };
 
 //Square item must be a shape
-class Square: public Shape{
+struct Square: public Shape{
     public:
+        ~Square();
         Square(int l, int w, string o);
-        string getOutlineColour();
+        string getOutline();
+        void draw();
 
-    private:
-        const int area
+    protected:
+        const int area;
         const string outline;
 };
 
 //Filled Square inherits Fillable and Square
-class FilledSquare: public Square, public Fillable{
+struct FilledSquare: public Square, public Fillable{
     public:
+        ~FilledSquare();
         FilledSquare(int l, int w, string o, string f);
+        void draw();
 };
 
 //FilledTextSquare is Fillable and includes Text
-class FilledTextSquare: public FilledSquare, public Text{
+struct FilledTextSquare: public FilledSquare, public Text{
     public:
+        ~FilledTextSquare();
         FilledTextSquare(int l, int w, string o, string f, string t);
+        void draw();
 };
 
 //Circle item must be a shape
-class Circle: public Shape{
+struct Circle: public Shape{
     public:
+        ~Circle();
         Circle(int l, int w, string o);
-        string getOutlineColour();
+        string getOutline();
+        void draw();
 
-    private:
-        const int area
+    protected:
         const string outline;
 };
 
 //FilledCircle inherits Fillable and Circle
-class FilledCircle: public Circle, public Fillable{
+struct FilledCircle: public Circle, public Fillable{
     public:
+        ~FilledCircle();
         FilledCircle(int l, int w, string o, string f);
+        void draw();
 };
 
 //Arc item must be a shape
-class Arc: public Shape{
+struct Arc: public Shape{
     public:
+        ~Arc();
         Arc(int l, int w, string o);
-        string getOutlineColour();
+        string getOutline();
+        void draw();
 
-    private:
+    protected:
         const string outline;
 };
