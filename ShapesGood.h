@@ -12,7 +12,7 @@ struct Shape{
         int getWidth();
         virtual void draw();
 
-    protected:
+    private:
         const int length;
         const int width;
 };
@@ -24,7 +24,7 @@ struct Fillable{
         Fillable(string f);
         string getFill();
 
-    protected:
+    private:
         const string fill;
 };
 
@@ -35,7 +35,7 @@ struct Text{
         Text(string t);
         string getText();
 
-    protected:
+    private:
         const string text;
 };
 
@@ -47,7 +47,7 @@ struct Square: public Shape{
         string getOutline();
         void draw();
 
-    protected:
+    private:
         const int area;
         const string outline;
 };
@@ -76,7 +76,7 @@ struct Circle: public Shape{
         string getOutline();
         void draw();
 
-    protected:
+    private:
         const string outline;
 };
 
@@ -96,6 +96,6 @@ struct Arc: public Shape{
         string getOutline();
         void draw();
 
-    protected:
+    private:
         const string outline;
 };
